@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sneha Parmar - Full Stack Developer Portfolio | React, Node.js, Python, OpenCV Expert">
+    <title>Sneha Parmar | Full Stack Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #4CAF50;
+            --dark-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --text-light: #eaeaea;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .btn-custom {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin: 10px;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-custom:hover {
+            background: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            background: var(--dark-bg);
+        }
+        
+        section:nth-child(even) {
+            background: #0f0f1e;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        /* Skills */
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.3);
+        }
+        
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .skill-card h4 {
+            margin-bottom: 10px;
+        }
+        
+        /* Projects */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(108, 99, 255, 0.4);
+        }
+        
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: rgba(108, 99, 255, 0.2);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact */
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: var(--card-bg);
+            color: var(--text-light);
+            border-radius: 50%;
+            margin: 10px;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(108, 99, 255, 0.2);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-code"></i> Sneha Parmar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm <span style="color: var(--primary-color);">Sneha Parmar</span> 👋</h1>
+            <p class="tagline">Full Stack Developer | LeetCode Enthusiast | Innovation Seeker</p>
+            <p class="lead">Building scalable web applications & solving complex algorithmic problems</p>
+            <a href="#projects" class="btn-custom">View My Work</a>
+            <a href="#contact" class="btn-custom">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">🙋‍♀️ About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3>Full Stack Developer | Problem Solver</h3>
+                    <p class="lead">🎓 B.Tech Computer Science & Engineering @ <strong>K.R. Mangalam University, Gurugram</strong></p>
+                    <p>📍 Based in Gurugram, India</p>
+                    <p>💻 Passionate about <strong>Full Stack Development</strong> & <strong>Problem Solving</strong></p>
+                    <p>🌱 Currently learning advanced system design and AI integrations</p>
+                    <p>⚡ Lifelong Learner | Open Source Enthusiast</p>
+                    <p>🏆 Building scalable web applications and solving complex algorithmic problems</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="React" width="80" height="80" style="margin: 20px;">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="Node.js" width="80" height="80" style="margin: 20px;">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" width="80" height="80" style="margin: 20px;">
+                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB" width="80" height="80" style="margin: 20px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">🛠️ Tech Stack</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fab fa-react"></i>
+                        <h4>Frontend</h4>
+                        <p>React.js, JavaScript, TypeScript, HTML5, CSS3, Bootstrap, Tailwind CSS</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fab fa-node-js"></i>
+                        <h4>Backend</h4>
+                        <p>Node.js, Express.js, NestJS, REST APIs</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h4>Database</h4>
+                        <p>MongoDB, PostgreSQL</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fab fa-python"></i>
+                        <h4>Languages</h4>
+                        <p>Python, Java, JavaScript, TypeScript</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>AI/ML</h4>
+                        <p>OpenCV, Image Processing, Computer Vision</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <i class="fab fa-git-alt"></i>
+                        <h4>Tools</h4>
+                        <p>Git, GitHub, VS Code</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">🚀 Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3>🖼️ Image Sampling and Quantization System</h3>
+                <p>A complete document scanner system using Python and OpenCV. Performs image acquisition, resolution analysis, gray-level quantization, and quality evaluation for document scanning.</p>
+                <div>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">Image Processing</span>
+                </div>
+                <a href="https://github.com/SnehaParmar10/Image-Sampling-and-Quantization-System" target="_blank" class="btn-custom mt-3">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>🤖 AI-Based Surveillance Image Restoration System</h3>
+                <p>Focuses on image restoration techniques for surveillance-style images. Applies AI-based restoration algorithms to improve image clarity for surveillance use cases.</p>
+                <div>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">Deep Learning</span>
+                    <span class="tech-badge">AI</span>
+                </div>
+                <a href="https://github.com/SnehaParmar10/AI-Based-Surveillance-Image-Restoration-System" target="_blank" class="btn-custom mt-3">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>🚦 Traffic Monitoring with Computer Vision</h3>
+                <p>Computer Vision analysis for traffic monitoring. Features edge detection, object recognition, feature extraction, and comparative analysis of CV methods.</p>
+                <div>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">OpenCV</span>
+                    <span class="tech-badge">Computer Vision</span>
+                </div>
+                <a href="https://github.com/SnehaParmar10/traffic-monitoring-cv" target="_blank" class="btn-custom mt-3">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>🧩 Intelligent Image Processing System</h3>
+                <p>Assignment-based intelligent image processing system. Digital Image Processing including compression, segmentation, and analysis.</p>
+                <div>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">DIP</span>
+                    <span class="tech-badge">Algorithms</span>
+                </div>
+                <a href="https://github.com/SnehaParmar10/Assignment-5-Intelligent-Image-Processing" target="_blank" class="btn-custom mt-3">View Project</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>💡 LeetCode Solutions</h3>
+                <p>My collection of LeetCode problem solutions. Algorithmic problem solving in Java covering data structures, dynamic programming, graphs, and trees.</p>
+                <div>
+                    <span class="tech-badge">Java</span>
+                    <span class="tech-badge">Algorithms</span>
+                    <span class="tech-badge">DSA</span>
+                </div>
+                <a href="https://github.com/SnehaParmar10/Leetcode-Question-solutions" target="_blank" class="btn-custom mt-3">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container text-center">
+            <h2 class="section-title">🌐 Connect With Me</h2>
+            <p class="lead">Let's build something amazing together!</p>
+            <div class="social-links mt-4">
+                <a href="https://www.linkedin.com/in/sneha-rajput10" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/SnehaParmar10" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://leetcode.com/u/Sneha_Parmar10" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sneha Parmar | Built with ❤️ and ☕</p>
+            <p>🚀 Full Stack Developer | Open Source Enthusiast</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
