@@ -1,4 +1,4 @@
-<h1 align="center">Hi there, I'm Sneha Parmar 👋</h1>
+.<h1 align="center">Hi there, I'm Sneha Parmar 👋</h1>
 <h3 align="center">Full Stack Developer | LeetCode Enthusiast | Innovation Seeker</h3>
 
 <p align="center">
